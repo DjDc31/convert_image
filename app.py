@@ -10,9 +10,10 @@ import io
 
 def convert_image(input_path, output_format):
     with Image.open(input_path) as im:
-        buffer = io.BytesIO()
-        im.save(buffer, format=output_format)
-        return buffer.getvalue()
+        output_buffer = io.BytesIO()
+        im.save(output_buffer, format=output_format)
+        output_buffer.seek(0)
+        return output_buffer
 
 pickup_format = st.selectbox('Choose your format',
     ("JPEG", "PNG", "GIF", "BMP", "TIFF", "WebP", "ICO", "PBM", "PGM", "PPM", "RGB", "RGBA", "CMYK", "YCbCr", "LAB", "HSV", "I;16", "I;16L", "I;16B", "F"))
