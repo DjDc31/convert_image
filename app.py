@@ -2,6 +2,7 @@ import streamlit as st
 import datetime
 import requests
 from PIL import Image
+import io
 
 '''
 # Image convertisseur front
