@@ -5,7 +5,7 @@ from PIL import Image
 import io
 
 '''
-# Image convertisseur front
+# Image convertisseur front v0.0.2
 '''
 
 def convert_image(input_path, output_format):
