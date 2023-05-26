@@ -5,7 +5,7 @@ from PIL import Image
 import io
 
 '''
-# Image convertisseur front v0.0.5
+# Image convertisseur front v0.0.6
 '''
 
 def convert_image(input_path, output_format):
@@ -23,9 +23,11 @@ take_file = st.file_uploader('Image uploader')
 if take_file:
     if st.button('Convertir mon image'):
         transformed_img = convert_image(take_file, pickup_format)
+        timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+        file_name = "converted_image_{}.{}".format(timestamp, pickup_format.lower())
         st.download_button(
             label="Download the converted image",
             data=transformed_img,
-            file_name="converted_image.jpg",
-            mime="image/jpeg"
+            file_name=file_name,
+            mime="image/{}".format(pickup_format.lower())
         )
