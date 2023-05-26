@@ -5,7 +5,7 @@ from PIL import Image
 import io
 
 '''
-# Image convertisseur front v0.0.3
+# Image convertisseur front v0.0.4
 '''
 
 def convert_image(input_path, output_format):
@@ -27,13 +27,10 @@ with st.form('params_for_api'):
 
         st.image(transformed_img, use_column_width=True)
 
-        download_button = st.button("Download the converted image")
-
-        if download_button:
+        if st.form_submit_button('Convertir mon image'):
             st.download_button(
+                label="Download the converted image",
                 data=transformed_img,
-                file_name="converted_image.jpg",  # Remplacez le nom de fichier par le format approprié
-                mime="image/jpeg"  # Remplacez le type MIME en fonction de votre format d'image
+                file_name="converted_image.jpg",
+                mime="image/jpeg"
             )
-
-    st.form_submit_button('Convertir mon image')
